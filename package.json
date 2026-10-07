@@ -1,0 +1,28 @@
+{
+  "name": "quran-azhar-exams",
+  "version": "1.0.0",
+  "description": "An app that geenrates quraan exams for Azhar students",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "quran-json": "^3.1.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "quran-meta": "^7.0.0",
+    "vite": "^8.0.8"
+  }
+}
