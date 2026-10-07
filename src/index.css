@@ -1,3 +1,38 @@
+:root {
+  /* Backgrounds */
+  --bg-main: #ece6f9;            /* خلفية الصفحة: لافندر هادئ */
+  --bg-card: #f7f4fd;            /* البطاقات: أفتح من الصفحة عشان تبرز */
+  --bg-subtle: #e3dbf6;          /* خلفية الأزرار والتبويبات الفاتحة */
+  --bg-accent-box: #f1edfb;      /* خلفية البطاقات الفرعية */
+
+  /* Baby Violet Palette */
+  --primary-heading: #7c5cbf;    /* خط العناوين والإطارات */
+  --baby-violet-start: #a892ee;  /* بداية تدرج الهيدر */
+  --baby-violet-end: #c4b5fd;    /* نهاية تدرج الهيدر */
+  --btn-baby-violet: #b8a1f8;    /* أزرار الإجابة والتبويب المختار */
+  --border-light: #d2c6f0;       /* الحدود الفاتحة */
+
+  /* Green Action & Quranic Palette */
+  --action-green-dark: #3a9268;  /* إطار أرقام الآيات */
+  --action-green-light: #52b788; /* زر توليد السؤال */
+  --green-soft: #74c69d;         /* نهاية تدرج زر التوليد */
+  --answer-bg: #f4fbf7;          /* خلفية صندوق الإجابة */
+  --answer-border: #b7e4c7;      /* حدود صندوق الإجابة */
+
+  /* Error */
+  --error-bg: #fdedec;
+  --error-text: #c0392b;
+  --error-border: #f1948a;
+
+  /* Text (chosen for readable contrast on the colors above) */
+  --text-main: #2c2c2c;          /* النص الأساسي */
+  --text-muted: #55506a;         /* النص الثانوي */
+  --violet-text: #5b40a0;        /* نص بنفسجي للأزرار والروابط الصغيرة */
+  --on-violet: #2d1b69;          /* نص غامق فوق البنفسجي الفاتح */
+  --on-green: #0b3d2b;           /* نص غامق فوق الأخضر الفاتح */
+  --green-text: #1f6b49;         /* نص أخضر غامق (رقم الآية، عنوان الإجابة) */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,8 +41,8 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f0e8;
-  color: #2c2c2c;
+  background: var(--bg-main);
+  color: var(--text-main);
   direction: rtl;
   min-height: 100vh;
 }
@@ -23,9 +58,9 @@ body {
   text-align: center;
   margin-bottom: 32px;
   padding: 28px 24px;
-  background: linear-gradient(135deg, #1a5276, #2e86c1);
+  background: linear-gradient(135deg, var(--baby-violet-start), var(--baby-violet-end));
   border-radius: 16px;
-  color: white;
+  color: var(--on-violet);
 }
 
 .app-header h1 {
@@ -48,17 +83,17 @@ body {
 
 /* Selector */
 .selector {
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(124, 92, 191, 0.12);
 }
 
 .system-tabs {
   display: flex;
   gap: 6px;
   margin-bottom: 16px;
-  background: #eaf4fb;
+  background: var(--bg-subtle);
   padding: 5px;
   border-radius: 10px;
 }
@@ -69,7 +104,7 @@ body {
   border: none;
   border-radius: 7px;
   background: transparent;
-  color: #1a5276;
+  color: var(--violet-text);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -78,12 +113,12 @@ body {
 }
 
 .system-tab:hover {
-  background: #d4e9f7;
+  background: var(--border-light);
 }
 
 .system-tab.active {
-  background: #1a5276;
-  color: white;
+  background: var(--btn-baby-violet);
+  color: var(--on-violet);
 }
 
 .selector-header {
@@ -98,19 +133,19 @@ body {
   margin-right: 10px;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #7f8c8d;
+  color: var(--text-muted);
 }
 
 .selector-hint {
   font-size: 0.82rem;
-  color: #7f8c8d;
+  color: var(--text-muted);
   margin-bottom: 12px;
 }
 
 .label {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #1a5276;
+  color: var(--primary-heading);
 }
 
 .selector-actions {
@@ -119,9 +154,9 @@ body {
 }
 
 .btn-secondary {
-  background: #eaf4fb;
-  color: #1a5276;
-  border: 1px solid #aed6f1;
+  background: var(--bg-subtle);
+  color: var(--violet-text);
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   padding: 4px 12px;
   font-size: 0.85rem;
@@ -131,7 +166,7 @@ body {
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: #aed6f1;
+  background: var(--border-light);
 }
 
 .btn-secondary:disabled {
@@ -145,14 +180,14 @@ body {
   gap: 8px;
   margin-bottom: 12px;
   font-size: 0.9rem;
-  color: #1a5276;
+  color: var(--violet-text);
   flex-wrap: wrap;
 }
 
 .range-row input {
   width: 72px;
   padding: 5px 8px;
-  border: 1px solid #aed6f1;
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   font-size: 0.9rem;
   font-family: inherit;
@@ -181,9 +216,10 @@ body {
 }
 
 .unit-btn {
-  border: 2px solid #d5d8dc;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
-  background: #fdfefe;
+  background: var(--bg-card);
+  color: var(--text-main);
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.15s;
@@ -220,14 +256,14 @@ body {
 }
 
 .unit-btn:hover:not(:disabled) {
-  border-color: #2e86c1;
-  background: #eaf4fb;
+  border-color: var(--btn-baby-violet);
+  background: var(--bg-subtle);
 }
 
 .unit-btn.selected {
-  background: #2e86c1;
-  border-color: #1a5276;
-  color: white;
+  background: var(--btn-baby-violet);
+  border-color: var(--primary-heading);
+  color: var(--on-violet);
 }
 
 .unit-btn:disabled {
@@ -239,15 +275,15 @@ body {
 .btn-generate {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #1e8449, #27ae60);
-  color: white;
+  background: linear-gradient(135deg, var(--action-green-light), var(--green-soft));
+  color: var(--on-green);
   border: none;
   border-radius: 10px;
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s;
-  box-shadow: 0 3px 10px rgba(39,174,96,0.3);
+  box-shadow: 0 3px 10px rgba(82, 183, 136, 0.35);
 }
 
 .btn-generate:hover:not(:disabled) {
@@ -261,9 +297,9 @@ body {
 
 /* Error */
 .error-msg {
-  background: #fdedec;
-  color: #c0392b;
-  border: 1px solid #f1948a;
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
   border-radius: 8px;
   padding: 12px 16px;
   text-align: center;
@@ -271,11 +307,11 @@ body {
 
 /* Question Card */
 .question-card {
-  background: white;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  border-right: 5px solid #1a5276;
+  box-shadow: 0 2px 12px rgba(124, 92, 191, 0.15);
+  border-right: 5px solid var(--primary-heading);
 }
 
 .question-meta-row {
@@ -287,7 +323,7 @@ body {
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #7f8c8d;
+  color: var(--text-muted);
   cursor: pointer;
   user-select: none;
 }
@@ -296,12 +332,13 @@ body {
   cursor: pointer;
   width: 15px;
   height: 15px;
+  accent-color: var(--primary-heading);
 }
 
 .question-source {
   margin-top: 10px;
   font-size: 0.85rem;
-  color: #7f8c8d;
+  color: var(--text-muted);
 }
 
 .question-meta {
@@ -310,31 +347,31 @@ body {
   gap: 8px;
   margin-top: 8px;
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: var(--text-muted);
 }
 
 .question-meta span {
-  background: #eaf4fb;
-  color: #1a5276;
+  background: var(--bg-subtle);
+  color: var(--violet-text);
   padding: 3px 10px;
   border-radius: 20px;
   font-weight: 600;
 }
 
 .question-meta span.chip-active {
-  background: #1a5276;
-  color: white;
+  background: var(--btn-baby-violet);
+  color: var(--on-violet);
 }
 
 .question-text {
   font-size: 1.25rem;
   line-height: 2.1;
-  color: #1c2833;
+  color: var(--text-main);
   margin-bottom: 10px;
 }
 
 .verse-highlight {
-  color: #1a5276;
+  color: var(--violet-text);
   font-weight: 600;
 }
 
@@ -342,26 +379,27 @@ body {
 .btn-show-answer {
   width: 100%;
   padding: 11px;
-  background: #fdfefe;
-  color: #1a5276;
-  border: 2px solid #2e86c1;
+  background: var(--bg-card);
+  color: var(--violet-text);
+  border: 2px solid var(--btn-baby-violet);
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  font-family: inherit;
   transition: all 0.15s;
 }
 
 .btn-show-answer:hover {
-  background: #2e86c1;
-  color: white;
+  background: var(--btn-baby-violet);
+  color: var(--on-violet);
 }
 
 /* Answer Block */
 .answer-block {
   margin-top: 16px;
-  background: #f0f9f0;
-  border: 1px solid #a9dfbf;
+  background: var(--answer-bg);
+  border: 1px solid var(--answer-border);
   border-radius: 10px;
   padding: 16px;
 }
@@ -369,7 +407,7 @@ body {
 .answer-label {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1e8449;
+  color: var(--green-text);
   margin-bottom: 12px;
 }
 
@@ -389,13 +427,14 @@ body {
 .answer-surah {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #1a5276;
+  color: var(--violet-text);
   margin: 6px 0 4px;
 }
 
 .verse-num {
-  background: #1e8449;
-  color: white;
+  background: var(--answer-border);
+  border: 2px solid var(--action-green-dark);
+  color: var(--green-text);
   width: 26px;
   height: 26px;
   border-radius: 50%;
@@ -409,7 +448,7 @@ body {
 
 .verse-text {
   font-size: 1.15rem;
-  color: #1c2833;
+  color: var(--text-main);
   line-height: 2;
 }
 
@@ -419,11 +458,11 @@ body {
   margin-top: 32px;
   padding: 16px;
   font-size: 0.85rem;
-  color: #7f8c8d;
+  color: var(--text-muted);
 }
 
 .app-footer a {
-  color: #2e86c1;
+  color: var(--violet-text);
   text-decoration: none;
   direction: ltr;
   display: inline-block;
