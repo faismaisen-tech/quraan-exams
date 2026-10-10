@@ -12,7 +12,8 @@ export default defineConfig({
     VitePWA({
       // new versions install themselves and the page reloads once, so phones never stay on an old copy
       registerType: 'autoUpdate',
-      injectRegister: false, // registered from src/main.jsx
+      // the registration code is written straight into index.html, so tools such as PWABuilder can see it
+      injectRegister: 'inline',
       includeAssets: ['favicon.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'اختبر حفظك - إكمال الآيات والتسميع',

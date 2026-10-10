@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { registerSW } from 'virtual:pwa-register';
 import App from './App';
 import './index.css';
 
-// Installable app + offline support. When a new version is published, it is downloaded in the
-// background and the page reloads once, so an installed copy never stays outdated for long.
-registerSW({ immediate: true });
+// The service worker is registered by a small script that the build writes into index.html.
+// When a NEW version of the app takes over (an update, not the very first install), reload once
+// so an installed copy never keeps showing the old version.
+if ('serviceWorker' in navigator) {
+  const hadController = Boolean(navigator.serviceWorker.controller);
+  let reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloading) return;
+    reloading = true;
+    window.location.reload();
+  });
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
