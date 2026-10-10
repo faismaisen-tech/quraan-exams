@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // Name of the GitHub repository (the site lives at https://<user>.github.io/<REPO>/).
 // If you rename the repo, change it here — it is used for the app's scope and start page too.
-const BASE = '/quraan-exams/';
+const BASE = '/ikhtabir-hifzak/';
 
 export default defineConfig({
   plugins: [
