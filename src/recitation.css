@@ -1,0 +1,212 @@
+/* Voice recitation: floating button, live panel, progressive answer */
+
+.fab-recite {
+  position: fixed;
+  left: 20px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--btn-baby-violet);
+  color: var(--on-violet);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(124, 92, 191, 0.35);
+  transition: transform 0.15s, background 0.2s;
+}
+
+.fab-recite:hover {
+  transform: translateY(-2px);
+}
+
+.fab-recite.listening {
+  background: var(--error-text);
+  color: #fff;
+  animation: fab-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes fab-pulse {
+  0%, 100% { box-shadow: 0 6px 18px rgba(192, 57, 43, 0.35), 0 0 0 0 rgba(192, 57, 43, 0.45); }
+  50%      { box-shadow: 0 6px 18px rgba(192, 57, 43, 0.35), 0 0 0 12px rgba(192, 57, 43, 0); }
+}
+
+.recite-panel {
+  margin: 4px 0 16px;
+  padding: 16px;
+  background: var(--bg-accent-box);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+}
+
+.recite-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.recite-title {
+  font-weight: 700;
+  color: var(--primary-heading);
+}
+
+.recite-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.recite-status.recording {
+  color: var(--error-text);
+  font-weight: 600;
+}
+
+.rec-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--error-text);
+  animation: rec-blink 1s ease-in-out infinite;
+}
+
+@keyframes rec-blink {
+  50% { opacity: 0.25; }
+}
+
+.recite-msg {
+  margin-bottom: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+}
+
+.recite-hint {
+  background: var(--bg-subtle);
+  color: var(--violet-text);
+}
+
+.recite-alert {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+  font-weight: 700;
+  animation: alert-shake 0.35s ease-in-out;
+}
+
+.recite-done {
+  background: var(--answer-bg);
+  color: var(--green-text);
+  border: 1px solid var(--answer-border);
+  font-weight: 700;
+}
+
+.recite-stats {
+  font-weight: 500;
+}
+
+@keyframes alert-shake {
+  0%, 100% { transform: none; }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.recite-answer {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  font-size: 1.2rem;
+  line-height: 2.4;
+}
+
+.rw {
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 6px;
+}
+
+.rw-correct {
+  background: var(--answer-bg);
+  color: var(--green-text);
+  box-shadow: inset 0 -2px 0 var(--answer-border);
+  animation: rw-pop 0.25s ease-out;
+}
+
+.rw-pending {
+  height: 0.8em;
+  padding: 0;
+  vertical-align: middle;
+  background: var(--border-light);
+}
+
+/* the word the reader should say now */
+.rw-next {
+  background: var(--btn-baby-violet);
+  animation: next-blink 1.1s ease-in-out infinite;
+}
+
+/* wrong word heard: the awaited word flashes red, nothing is written */
+.rw-alert {
+  background: var(--error-text);
+  animation: none;
+  box-shadow: 0 0 0 3px var(--error-border);
+}
+
+.rw-skipped {
+  color: var(--text-muted);
+  box-shadow: inset 0 -2px 0 var(--border-light);
+}
+
+@keyframes next-blink {
+  50% { opacity: 0.35; }
+}
+
+.rw-verse {
+  color: var(--text-muted);
+  font-size: 0.95em;
+}
+
+@keyframes rw-pop {
+  from { opacity: 0.2; transform: translateY(3px); }
+  to   { opacity: 1;   transform: none; }
+}
+
+.recite-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.recite-actions:empty {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab-recite.listening,
+  .rec-dot,
+  .rw-correct,
+  .rw-next,
+  .recite-alert {
+    animation: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .fab-recite {
+    left: 12px;
+    padding: 12px 16px;
+  }
+  .recite-answer {
+    font-size: 1.1rem;
+  }
+}

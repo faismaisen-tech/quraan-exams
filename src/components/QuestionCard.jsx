@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SYSTEM_BY_KEY } from '../data/systems';
+import RecitationPanel from './RecitationPanel';
 
 const ORDINALS = ['الأول', 'الثاني', 'الثالث', 'الرابع'];
 const span = ([a, b]) => (a === b ? `${a}` : `${a}–${b}`);
@@ -78,6 +79,8 @@ export default function QuestionCard({ question }) {
         {' '}إلى{' '}
         <span className="verse-highlight">﴿{verseEnd.text}﴾</span>
       </p>
+
+      <RecitationPanel answerVerses={answerVerses} onStart={() => setShowAnswer(false)} />
 
       <button
         className="btn-show-answer"
